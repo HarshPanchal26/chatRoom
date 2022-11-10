@@ -1,0 +1,98 @@
+> use harsh
+switched to db harsh
+> DB
+function DB() {
+    [native code]
+}
+> db
+harsh
+> db.insertOne({name:"Hrah"})
+uncaught exception: TypeError: db.insertOne is not a function :
+@(shell):1:1
+> db.insert({name:"Hrah"})
+uncaught exception: TypeError: db.insert is not a function :
+@(shell):1:1
+> db.name.insertOne({name:"Hrah"})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("62f0aeeafd72f804f74ce6d9")
+}
+> db.name.find()
+{ "_id" : ObjectId("624af327b30ccae5e2f9122e"), "id" : "234", "title" : "dear jindagi", "by" : "harsh panchal" }
+{ "_id" : ObjectId("624af5cfb30ccae5e2f9122f"), "id" : "123", "by" : "harsh panchal" }
+{ "_id" : ObjectId("62f0aeeafd72f804f74ce6d9"), "name" : "Hrah" }
+> use chatapplication
+switched to db chatapplication
+> db.user.find(name :"harsh")
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:18
+> db.user.find({name :"harsh"})
+>
+> db.users.find({name : "harsh"})
+{ "_id" : ObjectId("62ed10978193f29b306bc1b1"), "name" : "harsh", "room_name" : "panchal", "email" : "mummy@gmail.com", "password" : "222", "cpassword" : "222", "__v" : 0 }
+> db.users.find({name : "harsh"}).json()\
+uncaught exception: SyntaxError: invalid escape sequence :
+@(shell):1:38
+> db.users.find({name : "harsh"}).json()
+uncaught exception: TypeError: db.users.find(...).json is not a function :
+@(shell):1:1
+> db.users.find({name : "harsh"})
+{ "_id" : ObjectId("62ed10978193f29b306bc1b1"), "name" : "harsh", "room_name" : "panchal", "email" : "mummy@gmail.com", "password" : "222", "cpassword" : "222", "__v" : 0 }
+> db.users.find({name : "harsh"}).{name : 1,room_name : 1}
+uncaught exception: SyntaxError: missing name after . operator :
+@(shell):1:32
+> db.users.find({name : "harsh"},{name : 1,room_name : 1})
+{ "_id" : ObjectId("62ed10978193f29b306bc1b1"), "name" : "harsh", "room_name" : "panchal" }
+> db.users.find({password : 111},{name : 1,room_name : 1})
+> db.users.find({password : "111"},{name : 1,room_name : 1})
+{ "_id" : ObjectId("62ed06299aecd1ef9c1feedd"), "name" : "qqq", "room_name" : "mangita" }
+{ "_id" : ObjectId("62ed0fced89674083b2cc50a"), "name" : "sangu", "room_name" : "sangu" }
+{ "_id" : ObjectId("62ed1021d89674083b2cc50c"), "name" : "222", "room_name" : "2222" }
+{ "_id" : ObjectId("62ed1741f3292942aae1dafe"), "name" : "pappa", "room_name" : "papppapppa" }
+> db.users.skip(1).find({password : "111"},{name : 1,room_name : 1})
+uncaught exception: TypeError: db.users.skip is not a function :
+@(shell):1:1
+> db.users.find({password : "111"},{name : 1,room_name : 1}).skip(1)
+{ "_id" : ObjectId("62ed0fced89674083b2cc50a"), "name" : "sangu", "room_name" : "sangu" }
+{ "_id" : ObjectId("62ed1021d89674083b2cc50c"), "name" : "222", "room_name" : "2222" }
+{ "_id" : ObjectId("62ed1741f3292942aae1dafe"), "name" : "pappa", "room_name" : "papppapppa" }
+> db.users.find({password : "111"},{name : 1,room_name : 1}).skip(1).limit(2)
+{ "_id" : ObjectId("62ed0fced89674083b2cc50a"), "name" : "sangu", "room_name" : "sangu" }
+{ "_id" : ObjectId("62ed1021d89674083b2cc50c"), "name" : "222", "room_name" : "2222" }
+> db.users.find({password : {$eq : "111"}}
+... db.users.find({name : {$eq : "harsh"}})
+... ^C
+
+> use chatapplication
+switched to db chatapplication
+> db.users.find({name : {$eq : "harsh"}})
+{ "_id" : ObjectId("62ed10978193f29b306bc1b1"), "name" : "harsh", "room_name" : "panchal", "email" : "mummy@gmail.com", "password" : "222", "cpassword" : "222", "__v" : 0 }
+> db.users.find({name : {$in : ["harsh", "sangu","mangita"]}})
+{ "_id" : ObjectId("62ed0fced89674083b2cc50a"), "name" : "sangu", "room_name" : "sangu", "email" : "sangu@gmail.com", "password" : "111", "cpassword" : "111", "__v" : 0 }
+{ "_id" : ObjectId("62ed10978193f29b306bc1b1"), "name" : "harsh", "room_name" : "panchal", "email" : "mummy@gmail.com", "password" : "222", "cpassword" : "222", "__v" : 0 }
+> db.users.find({name : {$in : ["harsh", "sangu","manan"]}})
+{ "_id" : ObjectId("62ed0fced89674083b2cc50a"), "name" : "sangu", "room_name" : "sangu", "email" : "sangu@gmail.com", "password" : "111", "cpassword" : "111", "__v" : 0 }
+{ "_id" : ObjectId("62ed10978193f29b306bc1b1"), "name" : "harsh", "room_name" : "panchal", "email" : "mummy@gmail.com", "password" : "222", "cpassword" : "222", "__v" : 0 }
+> db.users.find({name : {$in : ["harsh", "sangu","mummy"]}})
+{ "_id" : ObjectId("62ed0fced89674083b2cc50a"), "name" : "sangu", "room_name" : "sangu", "email" : "sangu@gmail.com", "password" : "111", "cpassword" : "111", "__v" : 0 }
+{ "_id" : ObjectId("62ed10978193f29b306bc1b1"), "name" : "harsh", "room_name" : "panchal", "email" : "mummy@gmail.com", "password" : "222", "cpassword" : "222", "__v" : 0 }
+{ "_id" : ObjectId("62ed1727f3292942aae1dafc"), "name" : "mummy", "room_name" : "papa", "email" : "ppanchal27@gmail.com", "password" : "222", "cpassword" : "222", "__v" : 0 }
+>
+
+ db.users.find({name : {$exists : false}})
+> db.users.find({name : {$exists : true}})
+> db.user 
+ db.users.find({name : {$exists : false}})
+> db.users.find({name : {$exists : true}})
+
+> db.users.find({name : {$in : ["harsh", "mummy , "sangu"]}, email : "hrppanchal27@gmail.com"}, {name : 1});
+ db.users.find({$or : [{name : {$in :["harsh", "mummy"] }},{password  : "111"}, {emial : "heppanchal27@gmail.com"}] })
+
+ $lt = less than 
+ $ gt = greater than 
+ $eq = erual 
+ $neq = not equa  too 
+ $lte = less than equal 
+ $geq = greater than equa too 
+
+ > db.users.find({$or  :  [{name :{$not : {$in :["harsh", "mummy"] }}},{name : "sangu"}] })

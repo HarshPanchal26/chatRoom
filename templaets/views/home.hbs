@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk</title>
+    <link rel="stylesheet" href="/css/letstalk.css">
+</head>
+
+<body>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <h3 class="float-md-start mb-0"></h3>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="#">logout</a>
+
+                </nav>
+            </div>
+        </header>
+    </div>
+     {{!-- {{>navbar}} --}}
+    <main class="px-3">
+        <h1 id="title"> Let's chat {{name}} </h1>
+        <div class="container">
+            <div class="chat-area">
+                <div class="chat-user">
+                    <div class="no-of-message">
+                        <div class="chat">
+                            harsh shraddha Kapoor is an Indian actress and singer who works in Hindi-language films. She
+                            features in
+                        </div>
+                        <div class="profile">
+                            profile
+                        </div>
+                    </div>
+
+                    <div class="no-of-message">
+                        <div class="chat">
+                            hiiii
+
+                        </div>
+                        <div class="profile">
+                            profile
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="users">
+                user's status {{status1}}
+                <p class="sangu"> </p>
+            </div>
+        </div>
+    </main>
+
+    <div class="send">
+        <!-- <form nam="form" id="form1" method="post" action=""> -->
+            <label for="text" class="form-label"></label>
+            <input type="text" id="text-box" placeholder="idhhar liko........" name="message">
+            <span><button type="button" class="btn btn-primary" name="button">Send</button></span>
+        <!-- </from> -->
+    </div>
+<script type="module" src="/script/talk.js"></script>
+
+
+
+</body>
+
+</html>
