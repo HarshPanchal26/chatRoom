@@ -1,0 +1,14 @@
+{
+  "name": "harsh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "activeRoom.js",
+  "scripts": {
+    "test": "d"
+  },
+  "keywords": [
+    "h"
+  ],
+  "author": "",
+  "license": "ISC"
+}
