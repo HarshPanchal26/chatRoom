@@ -1,0 +1,43 @@
+to make a repository of any foldr ==> git init
+
+to check the status of file == > git status
+
+to uload the file  on git repository == > git add. ( . means , all the file in the current folder or directory , which are untracked)
+
+=== > we also can use name of the file, if want to  individual file being trackd == > git add harsh.txt
+
+==> to commit all the changes we want use => git commit -m "Message u want"
+
+==> git log ==> for history 
+
+==> git reset -ID 
+
+
+==> git stash --> to click a photo but do not store them in album insted put them on a back stage 
+
+==> git stash pop --> when ever want to call form back stage 
+
+==> for losse them ==> git stash clear 
+
+
+==> to store in git 
+
+git remote add origin https://github.com/HarshPanchal26/chatRoom
+
+
+git remote -v ==> give a list of attached linked with repository
+
+==> git push origin master --> to store it on a git hub
+
+
+==> git clone - URL -- bija na lakhela ma angri kerva mate  
+
+==> git push origin maste/<branch name>
+
+==> to create new  branch ==> git branch <Branch Name>
+
+==> to make head being pointing to new branch ==> git checkout <Branch_Name>
+
+==> And again to push any data in new branch == > gir add . , git commit -m "Message" , git push origin <Branch name>
+
+==> upstream => the url or branch from where you clone the or fork the file structure 
