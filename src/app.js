@@ -20,10 +20,50 @@ const collection = require('./register2');
 const cookieParser = require('cookie-parser');
 const { json } = require('body-parser');
 const fs = require('fs');
+// mynanme is khan
+// dependancy for Socket.io
+const http = require('http');
+const server = http.createServer(app);
+const io = require('socket.io')(server, {
+    cors: { origin: "*" }
+})
+
+
+// servsre of Sockte.io
+
+//global middleware ............
+// app.use((req,res,next)=>{
+//     console.log("harsh i am middlware again !!!!");
+//     console.log(`${new Date().toISOString()}: ${req.url}`);
+//     // res.send("hello form  middlware");
+//         next();
+// })
+// app.use(express.urlencoded({extended : false}));
+
+// app.use((req,res,next)=>{
+//     var url = req.url;
+//     console.log(url);
+//     next();
+// })
+
+// function findPath(req,res,next){
+//     var path = req.url;  
+//  }
+io.on('connection', (socket) => {
+    console.log("I am Server , I am connected");
+    //    console.log(socket.url);
+    socket.on('message', (message) => {
+        console.log(`Message form ${socket.id} is : ${message}`);
+        // socket.broadcast.emit('message' ,message);
+        io.emit('message', message);
+    })
+})
+
 
 // const uuid = require('uuid');
 const { v1: uuidv4 } = require('uuid');
 const { threadId } = require('worker_threads');
+const { Socket } = require('socket.io');
 // const Register2 = require('./registerNew');
 app.use(cookieParser());
 app.use(session({
@@ -37,14 +77,7 @@ var LogIn = false;
 
 app.use(express.json());
 
-// global middleware ............
-app.use((req,res,next)=>{
-    console.log("harsh i am middlware again !!!!");
-    console.log(`${new Date().toISOString()}: ${req.url}`);
-    // res.send("hello form  middlware");
-    next();
-})
-// app.use(express.urlencoded({extended : false}));
+
 
 // const path1 = path.join(__dirname, "../views");
 const path1 = path.join(__dirname, "../public/");
@@ -101,14 +134,16 @@ app.get("/home", (req, res) => {
     let sessionid = req.session.id;
     let query = req.query.room_id
     // console.log(sessionid); .................. session id is here .................
-
+    //  console.log(path);
     if (username == query && login) {
         // console.log("doesn't match");
         res.render('home');
+        console.log("Mai aavi gayo login kari ne");
 
     }
     else if (sigin && username == query) {
         res.redirect('home/?room_id=' + username);
+        console.log("Mai aavi gayo sign kari ne");
     }
     else {
         res.render('login');
@@ -116,6 +151,11 @@ app.get("/home", (req, res) => {
     }
 
 });
+
+
+function findPath(req, res, next) {
+    var path = req.url;
+}
 app.post("/", async (req, res) => {
     // if(!req.cookies.SignIn)
     // {
@@ -136,7 +176,7 @@ app.post("/", async (req, res) => {
                 password: req.body.password,
                 cpassword: req.body.password2,
                 room_uuid: uuid,
-                room_document : "file"
+                room_document: "file"
             });
             // console.log(typeof(name));
 
@@ -145,7 +185,7 @@ app.post("/", async (req, res) => {
             console.log(check2._id);
             let file_name = check2._id.toString();
             // let file_name = room_uuid;
-            const path3 = path.join(path_file, file_name+".json");
+            const path3 = path.join(path_file, file_name + ".json");
             var SignIn = true;
             res.cookie("signin", SignIn);
             res.cookie("login", LogIn);
@@ -247,7 +287,7 @@ app.post("/login", async (req, res) => {
 // code for active rooms 
 
 
-app.get("/create",(req,res,next) =>{
+app.get("/create", (req, res, next) => {
     res.send("hello");
     // console.log(req);
     // console.log("hello harsh i am Middleware")
@@ -279,7 +319,7 @@ app.get('*', (req, res) => {
 
 });
 // res.status(404).send\
-app.listen(8000, () => {
+server.listen(8000, () => {
     console.log("listning you harsh darling meet me at home")
 });
 

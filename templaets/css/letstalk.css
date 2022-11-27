@@ -67,7 +67,11 @@
         
         .chat {
           /* border: 2px solid red; */
-          width: 80%;
+          /* width :fit-content; */
+          /* display: inline-block; */
+          /* width: -moz-fit-content; */
+          width: auto;
+          /* max-width: 10%; */
           height: auto;
           margin: 5px;
           text-align: left;
