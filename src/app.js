@@ -1,4 +1,4 @@
-//    for make both required and  import working ona single file  
+// For make both required and  import working ona single file  
 // import { createRequire } from "module";
 // const require = createRequire(import.meta.url);
 
