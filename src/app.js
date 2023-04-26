@@ -1,4 +1,4 @@
-//    for make both required and  import working ona single file  
+// For make both required and  import working ona single file  
 // import { createRequire } from "module";
 // const require = createRequire(import.meta.url);
 
@@ -20,6 +20,7 @@ const collection = require('./register2');
 const cookieParser = require('cookie-parser');
 const { json } = require('body-parser');
 const fs = require('fs');
+
 // mynanme is khan
 // dependancy for Socket.io
 const http = require('http');
